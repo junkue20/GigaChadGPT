@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { SuggestionCardProps, WelcomeProps } from '@/app/chat/types';
+import { WelcomeProps } from '@/app/chat/types';
+import SuggestionCard from '@/app/chat/components/SuggestionCatd';
 
 const allSuggestions = [
   { title: '오늘 하루, 최고의 나로 사는 법', subtitle: '나태함에 지배당한 너에게 고한다' },
@@ -13,22 +14,6 @@ const allSuggestions = [
   { title: '내 안의 열등감 마주하기', subtitle: '그걸 무기가 아닌 연료로 쓰는 법' },
   { title: '3년 후, 내가 원하는 모습', subtitle: '그 목표를 향한 가장 확실한 첫걸음' },
 ];
-
-const SuggestionCard = ({ title, subtitle, onClick }: SuggestionCardProps) => (
-  // ✨ 2. props로 받은 onClick 함수를 버튼에 연결
-  <button
-    onClick={() => {
-      console.log('SuggestionCard 버튼 자체는 클릭됨! 전달할 제목:', title);
-      onClick();
-    }}
-    className="bg-gray-800 p-4 rounded-lg text-left w-full h-full hover:bg-gray-700 transition flex flex-col justify-between"
-  >
-    <div>
-      <p className="text-gray-200 font-semibold">{title}</p>
-      <p className="text-gray-500 text-sm mt-1">{subtitle}</p>
-    </div>
-  </button>
-);
 
 export default function Welcome({ onSuggestionClick }: WelcomeProps) {
   const [suggestions, setSuggestions] = useState<{ title: string; subtitle: string }[]>([]);
