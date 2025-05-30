@@ -1,7 +1,7 @@
-import Hero from '@/app/landing/Hero';
-import Features from '@/app/landing/Features';
-import Quote from '@/app/landing/Quote';
-import CTA from '@/app/landing/CTA';
+import CTA from './CTA';
+import Features from './Features';
+import Hero from './Hero';
+import Quote from './Quote';
 
 export default function Home() {
   return (
