@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { WelcomeProps } from '@/app/chat/types';
-import SuggestionCard from '@/app/chat/components/SuggestionCatd';
+import SuggestionCard from './SuggestionCard';
+import { WelcomeProps } from '../types';
 
 const allSuggestions = [
   { title: '오늘 하루, 최고의 나로 사는 법', subtitle: '나태함에 지배당한 너에게 고한다' },
@@ -38,7 +38,7 @@ export default function Welcome({ onSuggestionClick }: WelcomeProps) {
       <div className="text-center">
         <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text">
           {userName ? (
-            `${userName}님, 안녕하세요`
+            `${userName}, 다시보니 반갑다.`
           ) : (
             <span className="w-64 h-12 bg-gray-700 rounded-lg inline-block animate-pulse"></span>
           )}
