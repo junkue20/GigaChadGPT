@@ -1,36 +1,39 @@
 'use client';
 
-import { PlusIcon, QuestionMarkCircledIcon, GearIcon, Cross1Icon } from '@radix-ui/react-icons';
+import {
+  PlusIcon,
+  QuestionMarkCircledIcon,
+  GearIcon,
+  Cross1Icon,
+  DotFilledIcon,
+} from '@radix-ui/react-icons';
 
 interface SidebarProps {
   isSidebarOpen: boolean;
-  setSidebarOpen: (isOpen: boolean) => void;
+  toggleSidebar: () => void; // ✨ toggleSidebar prop 추가
 }
 
-export default function Sidebar({ isSidebarOpen, setSidebarOpen }: SidebarProps) {
+export default function Sidebar({ isSidebarOpen, toggleSidebar }: SidebarProps) {
   return (
     <>
       {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/60 z-30 md:hidden"
-          onClick={() => setSidebarOpen(false)}
-        ></div>
+        <div className="fixed inset-0 bg-black/60 z-30 md:hidden" onClick={toggleSidebar}></div>
       )}
 
       <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-gray-800 p-4 flex flex-col z-40
-                         transform transition-transform duration-300 ease-in-out
-                         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-                         md:static md:translate-x-0 md:w-64`}
+        className={`
+          fixed top-0 left-0 h-screen w-64 bg-gray-800 p-4 flex flex-col z-40
+          transform transition-transform duration-300 ease-in-out
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}
       >
-        <div className="flex items-center justify-between md:hidden">
-          <span className="text-white font-bold">메뉴</span>
-          <button onClick={() => setSidebarOpen(false)} className="p-2">
+        <div className="flex items-center justify-end md:hidden mb-4">
+          <button onClick={toggleSidebar} className="p-1">
             <Cross1Icon className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="flex-1 mt-4 md:mt-0">
+        <div className="flex-1">
           <button className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-700 w-full text-left">
             <PlusIcon className="w-5 h-5" />
             <span>새 채팅</span>
@@ -48,6 +51,13 @@ export default function Sidebar({ isSidebarOpen, setSidebarOpen }: SidebarProps)
           <a href="#" className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-700 text-sm">
             <GearIcon className="w-5 h-5" />
             <span>설정</span>
+          </a>
+          <a
+            href="https://www.instagram.com/only_one_gpt/"
+            className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-700 text-sm"
+          >
+            <DotFilledIcon className="w-5 h-5" />
+            <span>만든이 @only_one_gpt</span>
           </a>
         </div>
       </aside>
