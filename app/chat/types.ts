@@ -4,6 +4,10 @@ export interface MessageProps {
   role: 'user' | 'assistant';
   content: string;
 }
+export interface ChatMessagesProps {
+  messages: MessageProps[];
+  loading: boolean;
+}
 
 // ChatInput을 위한 Props (기존 코드와 호환되도록 유지)
 export interface ChatInputProps {
